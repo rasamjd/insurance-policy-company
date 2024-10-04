@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>111</x>
+      <y>342</y>
+      <w>300</w>
+      <h>285</h>
+    </coordinates>
+    <panel_attributes>/InsuranceCompany/
+--
+-name: String
+-users: HashMap&lt;Integer, User&gt;
+-adminUsername: String
+-adminPassword: String
+-flatRate: int
+--
++getUsers(String name): HashMap&lt;Integer, User&gt;
++getFlatRate(): int
++setName(): void
++print(): void
++toString(): String 
++toDelimitedString(): String
++clone(): InsuranceCompany
++validateAdmin(String username, String password): boolean
++validateUser(String username, String password): User
++findUser(int userID): User
++addUser(User user): boolean
++addUser(String name, String password, int userID, Address address): boolean
++usersList(ArrayList&lt;User&gt; users): String
++printUsers(ArrayList&lt;User&gt; users): void
++usersList(HashMap&lt;Integer, User&gt; users): String
++printUsers(HashMap&lt;Integer, User&gt; users): void
++sortUsers(): ArrayList&lt;User&gt;
++sortUsersByPremium(): ArrayList&lt;User&gt;
++findPolicy (int userID ,int policyID): InsurancePolicy
++addPolicy(int userID, InsurancePolicy policy): boolean
++printPolicies(int userID): void
++createThirdPartyPolicy(int userID, String policyHolderName, int id, Car car, int numberOfClaims, MyDate expiryDate, String comments): boolean
++createComprehensivePolicy(int userID, String policyHolderName, int id, Car car, int numberOfClaims, MyDate expiryDate, int driverAge, int level): boolean
++calcTotalPayments(int userID): double
++calcTotalPayments(): double
++carPriceRise(int userID, double risePercent): boolean
++carPriceRise(double risePercent): void
++allPolicies(): ArrayList&lt;InsurancePolicy&gt;
++filterByCarModelList(String carModel): ArrayList&lt;InsurancePolicy&gt;
++filterByCarModel(int userID, String carModel): HashMap&lt;Integer, InsurancePolicy&gt;
++filterByExpiryDate(int userID, MyDate date): HashMap&lt;Integer, InsurancePolicy&gt;
++filterByCarModel(String carModel): HashMap&lt;Integer, InsurancePolicy&gt;
++filterByExpiryDate(MyDate date): HashMap&lt;Integer, InsurancePolicy&gt;
++filterPoliciesByExpiryDate(MyDate expiryDate): HashMap&lt;User, HashMap&lt;Integer, InsurancePolicy&gt;&gt;
++deepCopyUsersHashMap(): HashMap&lt;Integer, User&gt; 
++shallowCopyUsersHashMap(): HashMap&lt;Integer, User&gt; 
++deepCopyUsers(): ArrayList&lt;User&gt; 
++shallowCopyUsers(): ArrayList&lt;User&gt; 
++getTotalPrpemiumPerCity(): HashMap(String, Double)
++getTotalPremiumPerCarModel(): HashMap&lt;String, Double&gt;
++getTotalCountPerCarModel(): HashMap&lt;String, Integer&gt;
++reportPremiumPerCity(): void
++reportPremiumPerCarModel(HashMap&lt;String, Double&gt; premiums, HashMap&lt;String, Integer&gt; counts): void
++populateDistinctCityNames(): ArrayList&lt;String&gt;
++load(String fileName): boolean
++save(String fileName): boolean
++loadTextFile(String fileName): boolean
++saveTextFile(String fileName): boolean
+TotalPaymentComparator
++compare(User a, User b): int
++getUsersPerCity(): HashMap&lt;String, ArrayList&lt;User&gt;&gt;
++usersLoginData(): String
+
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>405</x>
+      <y>96</y>
+      <w>201</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>&lt;abstract&gt;
+/InsurancePolicy/
+--
+#policyHolderName: String
+#id: int
+#car: Car
+#numberOfClaims: int
+#expiryDate: MyDate
+--
++getPolicyHolderName(): String
++getId(): int
++getCar(): Car
++getNumberOfClaims(): int
++getExpiryDate(): MyDate
++setPolicyHolderName(String policyHolderName): void
++setCarModel(String model): void
++setNumberOfClaims(int numberOfClaims): void
++print(): void
++toString(): String
++toDelimitedString(): String
++clone(): InsurancePolicy
++compareTo(InsurancePolicy other): int
++calcPayment(double flatRate): double
++policiesList(ArrayList&lt;InsurancePolicy&gt; policies): String
++printPolicies(ArrayList&lt;InsurancePolicy&gt; policies): void
++policiesList(HashMap&lt;Integer, InsurancePolicy&gt; policies): String
++printPolicies(HashMap&lt;Integer, InsurancePolicy&gt; policies): void
++carPriceRise(double risePercent): void
++carPriceRiseAll(HashMap&lt;Integer, InsurancePolicy&gt; policies, double risePercent): void
++carPriceRiseAll(ArrayList&lt;InsurancePolicy&gt; policies, double risePercent): void
++calcTotalPayments(HashMap&lt;Integer, InsurancePolicy&gt; policies, int flatRate): double
++calcTotalPayments(ArrayList&lt;InsurancePolicy&gt; policies, int flatRate): double
++filterByCarType(ArrayList&lt;InsurancePolicy&gt; policies, CarType carType): ArrayList&lt;InsurancePolicy&gt;
++filterByCarModel(ArrayList&lt;InsurancePolicy&gt; policies, String carModel): ArrayList&lt;InsurancePolicy&gt;
++filterByExpiryDate(ArrayList&lt;InsurancePolicy&gt; policies, MyDate date): ArrayList&lt;InsurancePolicy&gt;
++filterByCarType(HashMap&lt;Integer, InsurancePolicy&gt; policies, CarType carType): ArrayList&lt;InsurancePolicy&gt;
++filterByCarModel(HashMap&lt;Integer, InsurancePolicy&gt; policies, String carModel): HashMap&lt;Integer, InsurancePolicy&gt;
++filterByExpiryDate(HashMap&lt;Integer, InsurancePolicy&gt; policies, MyDate date): HashMap&lt;Integer, InsurancePolicy&gt;
++deepCopy(ArrayList&lt;InsurancePolicy&gt; policies): ArrayList&lt;InsurancePolicy&gt;
++shallowCopy(ArrayList&lt;InsurancePolicy&gt; policies): ArrayList&lt;InsurancePolicy&gt; 
++deepCopy(ArrayList&lt;InsurancePolicy&gt; policies): HashMap&lt;Integer, InsurancePolicy&gt;
++shallowCopy(ArrayList&lt;InsurancePolicy&gt; policies): HashMap&lt;Integer, InsurancePolicy&gt; 
++deepCopy(HashMap&lt;Integer, InsurancePolicy&gt; policies): HashMap&lt;Integer, InsurancePolicy&gt;
++shallowCopy(HashMap&lt;Integer, InsurancePolicy&gt; policies): HashMap&lt;Integer, InsurancePolicy&gt; 
++load(String fileName): HashMap&lt;Integer, InsurancePolicy&gt;
++save(HashMap&lt;Integer, InsurancePolicy&gt; policies, String fileName): Boolean 
++loadTextFile(String fileName): HashMap&lt;Integer, InsurancePolicy&gt;
++saveTextFile(HashMap&lt;Integer, InsurancePolicy&gt; policies, String fileName): Boolean 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>807</x>
+      <y>120</y>
+      <w>291</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>/ThirdPartyPolicy/
+--
+-comments: String
+--
++getComments(): String
++setComments(String comments): void
++print(): void
++toString(): String
++toDelimitedString(): String
++calcPayment(double flatRate): double
++createThirdPartyPolicy(String policyHolderName, int id, Car car, MyDate date, int numberPfClaims, String comments): ThirdPartyPolicy</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>807</x>
+      <y>177</y>
+      <w>291</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>/ComprehensivePolicy/
+--
+-dirverAge: int
+-level: int
+--
++getDriverAge(): int
++getLevel(): int
++setDriverAge(int driverAge): void
++setLevel(int level): void
++print(): void
++toString(): String
++toDelimitedString(): String
++calcPayment(double flatRate): double
++createComprehensivePolicy(String policyHolderName, int id, Car car, MyDate date, int numberPfClaims, int driverAge, int level): ComprehensivePolicy
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>138</y>
+      <w>33</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>603</x>
+      <y>162</y>
+      <w>210</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;600.0;10.0;600.0;140.0;680.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>342</y>
+      <w>282</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>/User/
+--
+-name: String
+-userID: int
+-address: Address
+-policies: ArrayList&lt;InsurancePolicies&gt;
+--
++getName(): String
++getPassword(): String
++getUserID(): int
++getAddress(): Address
++getPolicies(): HashMap&lt;Integer, InsurancePolicies&gt;
++setPassword(String password): void
++setAddress(Address address): void
++print(int flatRate): void
++toString: String
++toDelimitedString(): String
++clone(): User
++isValid(String username, String password): boolean
++findPolicy(int policyID): InsurancePolicy
++addPolicy(InsurancePolicy policy): boolean
++printPolicies(int flatRate): void
++usersList(ArrayList&lt;User&gt; users): String
++printUsers(ArrayList&lt;User&gt; users): void
++usersList(HashMap&lt;Integer, User&gt; users): String
++printUsers(HashMap&lt;Integer, User&gt; users): void
++calcTotalPremiums(int flatRate): double
++carPriceRiseAll(double risePercent): void
++filterByCarModel(String carModel): HashMap&lt;Integer, InsurancePolicy&gt;
++filterByExpiryDate(MyDate date): HashMap&lt;Integer, InsurancePolicy&gt;
++createThirdPartyPolicy(String policyHolderName, int id, Car car, int numberOfClaims, MyDate expiryDate, String comments): boolean
++createComprehensivePolicy(String policyHolderName, int id, Car car, int numberOfClaims, MyDate expiryDate, int driverAge, int level): boolean
++compareTo(User other): int
++deepCopy(ArrayList&lt;User&gt; users): ArrayList&lt;User&gt;
++shallowCopy(ArrayList&lt;User&gt; users): ArrayList&lt;User&gt;
++deepCopyPolicies(): ArrayList&lt;InsurancePolicy&gt; 
++shallowCopyPolicies(): ArrayList&lt;InsurancePolicy&gt; 
++deepCopyPoliciesHashMap(): HashMap&lt;Integer, InsurancePolicy&gt;
++shallowCopyPoliciesHashMap(): HashMap&lt;Integer, InsurancePolicy&gt;
++deepCopy(HashMap&lt;Integer, User&gt; users): ArrayList&lt;User&gt;
++shallowCopy(HashMap&lt;Integer, User&gt; users): ArrayList&lt;User&gt;
++deepCopyHashMap(HashMap&lt;Integer, User&gt; users): HashMap&lt;Integer, User&gt;
++shallowCopyHashMap(HashMap&lt;Integer, User&gt; users): HashMap&lt;Integer, User&gt;
++sortPoliciesByDate(): ArrayList&lt;InsurancePolicy&gt;
++getTotalCountPerCarModel(): HashMap&lt;String, Integer&gt;
++getTotalPremiumPerCarModel(): HashMap&lt;String, Double&gt;
++reportPremiumPerCarModel(HashMap&lt;String, Double&gt; premiums, HashMap&lt;String, Integer&gt; counts): void
++load(String fileName): HashMap&lt;Integer, User&gt;
++save(HashMap&lt;Integer, User&gt; users, String fileName): Boolean
++loadTextFile(String fileName): HashMap&lt;Integer, User&gt;
++saveTextFile(HashMap&lt;Integer, User&gt; users, String fileName): Boolean
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>195</x>
+      <y>138</y>
+      <w>114</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>/MyDate/
+--
+-year: int
+-month: int
+-day: int
+--
++getYear(): int
++getMonth(): int
++getDay(): int
++setDate(int newYear, int newMonth, int newDay): void
++toString(): String
++toDelimitedString(): String
++clone(): MyDate
++compareTo:(MyDate other): int
++isExpired(MyDate expiryDate): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>639</x>
+      <y>246</y>
+      <w>66</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>/Address/
+--
+-streetNum: int
+-street: String
+-suburb: String
+-city: String
+--
++getStreetNum(): int
++getStreet: String
++getSuburb(): String
++getCity(): String
++setCity(String city): String
++toString(): String
++toDelimitedString(): String
++clone(): Address
++compareTo(Address other): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>279</x>
+      <y>237</y>
+      <w>72</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>/Car/
+--
+-moidel: String
+-type: CarType
+-manufacturingYear: int
+-price: double
+--
++getModel(): String
++getType(): CarType
++getManufacturingYear(): int
++getPrice(): double
++setPrice(double price): void
++setModel(String model): void
++setManufacturingYear(int manufacturingYear): void
++setType(CarType type): void
++toString(): String
++toDelimitedString(): String
++clone(): Car</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>195</x>
+      <y>237</y>
+      <w>42</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+/CarType/
+--
+SUV
+SED
+LUX
+HATCH
+ELECTRIC
+SEDAN
+TRUCK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>348</x>
+      <y>246</y>
+      <w>63</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+
+m2=1                             1
+</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>306</x>
+      <y>150</y>
+      <w>105</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1                                                                 1
+ 
+</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>318</y>
+      <w>15</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=0..*
+
+1
+</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>318</y>
+      <w>12</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1
+
+1
+</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>381</y>
+      <w>48</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1             0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>234</x>
+      <y>249</y>
+      <w>51</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+
+m2=1                   1
+</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>75</x>
+      <y>57</y>
+      <w>690</w>
+      <h>615</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>81</x>
+      <y>6</y>
+      <w>48</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>&lt;interface&gt;
+/Serializable/
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>102</x>
+      <y>18</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>144</x>
+      <y>0</y>
+      <w>57</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>&lt;interface&gt;
+/Cloneable/
+--
++clone(): Object
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>168</x>
+      <y>18</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>639</x>
+      <y>114</y>
+      <w>99</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>&lt;interface&gt;
+/Comparable&lt;InsurancePolicy&gt;/
+--
++compareTo(InsurancePolicy other): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>603</x>
+      <y>117</y>
+      <w>42</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>624</x>
+      <y>198</y>
+      <w>99</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>&lt;interface&gt;
+/Comparable&lt;Address&gt;/
+--
++compareTo(Address other): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>216</y>
+      <w>9</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>195</x>
+      <y>90</y>
+      <w>99</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>&lt;interface&gt;
+/Comparable&lt;MyDate&gt;/
+--
++compareTo(MyDate other): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>219</x>
+      <y>108</y>
+      <w>9</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>615</x>
+      <y>615</y>
+      <w>99</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>&lt;interface&gt;
+/Comparable&lt;User&gt;/
+--
++compareTo(User other): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>633</x>
+      <y>582</y>
+      <w>9</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>327</y>
+      <w>66</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>/PolicyException/
+--
+-id: int
+-oldID: int
+--
++getNewID(): int
++generateID(): int
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>327</y>
+      <w>99</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>/PolicyHolderNameException/
+--
+-holderName: String
+--
++validateName(String holderName): boolean
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>852</x>
+      <y>282</y>
+      <w>60</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>/Exception/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>861</x>
+      <y>288</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>897</x>
+      <y>288</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
